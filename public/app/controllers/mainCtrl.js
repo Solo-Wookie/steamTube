@@ -1,9 +1,32 @@
 angular.module('mainCtrl', [])
   
 // .controller('mainController', function($rootScope, $location, Auth) {
-.controller('mainController', function() {
+.controller('mainController', function($scope, httpDataLoader) {
 
-  // var vm = this;
+  $scope.blah = httpDataLoader.load();
+
+  $scope.blah.then(function(response){
+    console.log("success", response);
+    $scope.games = response.data;
+    // debugger
+  }, function(response){
+    console.log('error')
+  });
+
+// var vm = this;
+// vm.blah = httpDataLoader.load();
+
+// vm.blah.then(function(response){
+//   console.log("success", response);
+//   vm.games = response.data;
+//   // debugger
+// }, function(response){
+//   console.log('error')
+// });
+
+
+
+  // vm.blah = "Hello Everyone";
 
   // //get info if a person is logged in
   // vm.loggedIn = Auth.isLoggedIn();

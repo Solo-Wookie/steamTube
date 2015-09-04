@@ -6,7 +6,14 @@ angular.module('app.routes', ['ngRoute'])
 
     // home page route
     .when('/', {
-      templateUrl : 'app/views/pages/home.html'
+      templateUrl : 'app/views/pages/home.html',
+      controller: 'mainController',
+      controllerAs: 'home',
+      resolve : {
+        scrape: ["httpDataLoader", function(httpDataLoader){
+          return httpDataLoader.load();
+        }]
+      }
     })
 
     // // login page
@@ -16,22 +23,15 @@ angular.module('app.routes', ['ngRoute'])
     //     controllerAs: 'login'
     // })
 
-    // //show all users on users page
-    // .when('/users', {
-    //   templateUrl : 'app/views/pages/users/all.html',
-    //   controller : 'userController',
-    //   controllerAs: 'user'
-    // })
-
-    // //form to create a new user
-    // //same view as edit page
-    // .when('/users/create', {
-    //   templateUrl : 'app/views/pages/users/single.html',
-    //   controller : 'userCreateController',
-    //   controllerAs: 'user'
-    // })
-
   //get rid of the hash in the URL
   $locationProvider.html5Mode(true);
   
-});
+})
+.service("httpDataLoader", ["$http", function($http) {
+  this.load = function() {
+    return $http({url: "assets/dataFile.json"});
+  }
+  this.test = function() {
+    console.log('yo doodz');
+  }
+}]);
