@@ -1,0 +1,14 @@
+{
+  "name": "steam-tube",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChuBaka13321/steamTube.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
+  }
+}
