@@ -1,73 +1,48 @@
-angular.module('mainCtrl', [])
+angular.module('mainCtrl', ['gameService'])
+// angular.module('mainCtrl', [])
   
 // .controller('mainController', function($rootScope, $location, Auth) {
-.controller('mainController', function($scope, httpDataLoader) {
+.controller('mainController', function($scope, $location, httpDataLoader, Game) {
 
-  $scope.blah = httpDataLoader.load();
+  // $scope.results = httpDataLoader.load();
 
-  $scope.blah.then(function(response){
-    console.log("success", response);
-    $scope.games = response.data;
-    // debugger
-  }, function(response){
-    console.log('error')
-  });
+  // $scope.results.then(function(response){
+  //   console.log("success", response);
+  //   $scope.games = response.data;
+  //   // debugger
+  // }, function(response){
+  //   console.log('error')
+  // });
+  
+  // grab all the users at page load
 
-// var vm = this;
-// vm.blah = httpDataLoader.load();
-
-// vm.blah.then(function(response){
-//   console.log("success", response);
-//   vm.games = response.data;
-//   // debugger
-// }, function(response){
-//   console.log('error')
-// });
-
+  $scope.single = function() {
+    var gameId = this.game["_id"];
+    // 
+    console.log(this.game["_id"]);
+    // console.log("yoooooooo" + newScope.blah)
+    $location.path('/game/'+ gameId)
+  }
 
 
-  // vm.blah = "Hello Everyone";
+  Game.all()
 
-  // //get info if a person is logged in
-  // vm.loggedIn = Auth.isLoggedIn();
+    .success(function(data) {
+      // when all the users come back, remove the processing variable
+      $scope.processing = false;
+        
+      // bind the users that come back to vm.users
+      $scope.games = data;
+    });
 
-  // //check to see if a user is logged in on every request
-  // $rootScope.$on('routeChangeStart', function() {
-  //   vm.loggedIn = Auth.isLoggedIn();
+})
 
-  //   //get user information
-  //   Auth.getUser()
-  //     .success(function(data) {
-  //       vm.user = data;
-  //     });
-  //   });
-
-  // //function to handle login form
-  // vm.doLogin = function() {
-
-  //   vm.processing = true;
-  //   // clear the error
-  //   vm.error = '';
-
-  //   //call the Auth.login() function
-  //   Auth.login(vm.loginData.username, vm.loginData.password)
-  //     .success(function(data) {
-  //       vm.processing = false;
-
-  //       //if a user successfully logs in, redirect to users page
-  //       if(data.success) {
-  //         $location.path('/users');         
-  //       } else {
-  //         vm.error = data.message;
-  //       }
-  //     });
-  // }
-
-  // //function to handle logging out
-  // vm.doLogout = function() {
-  //   Auth.logout();
-  //   //reset all user info
-  //   vm.user = {};
-  //   $location.path('/login');
-  // };
-});
+.service("httpDataLoader", ["$http", function($http) {
+  this.load = function() {
+    // return $http({url: "assets/dataFile.json"});
+    return $http.get("assets/dataFile.json");
+  }
+  this.test = function() {
+    console.log('yo doodz');
+  }
+}]);

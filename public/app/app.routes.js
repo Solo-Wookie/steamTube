@@ -7,13 +7,11 @@ angular.module('app.routes', ['ngRoute'])
     // home page route
     .when('/', {
       templateUrl : 'app/views/pages/home.html',
-      controller: 'mainController',
-      controllerAs: 'home',
-      resolve : {
-        scrape: ["httpDataLoader", function(httpDataLoader){
-          return httpDataLoader.load();
-        }]
-      }
+      controller: 'mainController'
+    })
+    .when('/game/:id', {
+      templateUrl : 'app/views/pages/game.html',
+      controller: 'gameController'
     })
 
     // // login page
@@ -27,11 +25,11 @@ angular.module('app.routes', ['ngRoute'])
   $locationProvider.html5Mode(true);
   
 })
-.service("httpDataLoader", ["$http", function($http) {
-  this.load = function() {
-    return $http({url: "assets/dataFile.json"});
-  }
-  this.test = function() {
-    console.log('yo doodz');
-  }
-}]);
+// .service("httpDataLoader", ["$http", function($http) {
+//   this.load = function() {
+//     return $http({url: "assets/dataFile.json"});
+//   }
+//   this.test = function() {
+//     console.log('yo doodz');
+//   }
+// }]);
