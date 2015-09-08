@@ -1,0 +1,30 @@
+<div class="jumbotron text-center"> 
+  <div><img ng-src={{image}} alt="Description" /></div>
+  <div>{{name}}</div>
+  <div>{{price}}</div>
+  <div>{{link}}</div>
+  
+  <!-- <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>                      </th>
+        <th>Game</th>
+        <th>Price</th>
+        <th>Link</th> -->
+        <!-- <th class="col-sm-2"></th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="game in games | orderb">
+        <td><img ng-src={{game.image}} alt="Description" /></td>
+        <td>{{ game.name }}</td>
+        <td>{{ game.price }}</td>
+        <td><a href="{{game.link}}">{{game.link}}</a></td>
+        <!-- <td class="col-sm-2">
+          <a ng-href="/users/{{ person._id }}" class="btn btn-danger">Edit</a>
+          <a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a>
+        </td> 
+      </tr> -->
+    </tbody>
+  </table>
+</div>

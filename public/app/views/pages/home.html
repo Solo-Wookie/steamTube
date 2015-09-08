@@ -9,14 +9,16 @@
         <th>                      </th>
         <th>Game</th>
         <th>Price</th>
+        <th>Link</th>
         <!-- <th class="col-sm-2"></th> -->
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="game in games">
-        <td><img ng-src={{game.image}} alt="Description" /></td>
-        <td>{{ game.title }}</td>
-        <td>{{ game.price }}</td>
+      <tr ng-repeat="game in games | orderBy: 'orderId'">
+        <td ng-click = single()><img ng-src={{game.image}} alt="Description" /></td>
+        <td ng-click = single()>{{ game.name }}</td>
+        <td ng-click = single()>{{ game.price }}</td>
+        <!-- <td ng-click = single()><a href="{{game.link}}">{{game.link}}</a></td> -->
         <!-- <td class="col-sm-2">
           <a ng-href="/users/{{ person._id }}" class="btn btn-danger">Edit</a>
           <a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a>
