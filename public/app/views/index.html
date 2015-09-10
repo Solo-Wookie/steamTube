@@ -33,6 +33,11 @@
   <!-- main Angular app files -->
   <script src="app/app.routes.js"></script>
   <script src="app/app.js"></script>
+
+  <!-- youtube scripts -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="assets/js/angular-youtube-embed.js"></script>
+  
 </head>
 
 <body ng-app="myApp" ng-controller="mainController as main">
@@ -63,6 +68,7 @@
   <div ng-view></div>
 </main>
 
+  <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
 </body>
 </html>
 

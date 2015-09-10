@@ -4,5 +4,6 @@ angular.module('myApp', [
   // 'authService',
   'mainCtrl',
   'gameCtrl',
-  'gameService'
+  'gameService',
+  'youtube-embed'
 ])

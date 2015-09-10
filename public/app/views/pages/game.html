@@ -1,8 +1,18 @@
+
+
 <div class="jumbotron text-center"> 
+    
+  <div class = "row">
+  
+      <youtube-video video-id="video1" class="col-md-6"></youtube-video>
+      <youtube-video video-id="video2" class="col-md-6"></youtube-video>
+      <!-- <youtube-video video-id="video3"></youtube-video> -->
+  </div>
+  
   <div><img ng-src={{image}} alt="Description" /></div>
   <div>{{name}}</div>
   <div>{{price}}</div>
-  <div>{{link}}</div>
+  <div><a ng-href="{{link}}">VISIT THE STEAM STORE</a></div>
   
   <!-- <table class="table table-bordered table-striped">
     <thead>
