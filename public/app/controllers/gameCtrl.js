@@ -9,6 +9,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
       $scope.link = data.link
       $scope.largeImage = data.largeImage
       console.log(data)
+      onClientLoad()
     })
 
   function showResponse(response) {
@@ -47,7 +48,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
           part: 'snippet',
           q: "Let's play " + $scope.name
       });
-      
+      console.log("$SCOPE.NAME === ", $scope.name);
       // Send the request to the API server,
       // and invoke onSearchRepsonse() with the response.
       request.execute(onSearchResponse);
@@ -57,7 +58,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
   function onSearchResponse(response) {
       showResponse(response);
   }
-  $timeout(function(){onClientLoad()}, 100);
+  // $timeout(function(){onClientLoad()}, 100);
 
 })
 
