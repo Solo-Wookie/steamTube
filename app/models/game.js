@@ -8,7 +8,8 @@ var GameSchema = new Schema({
   price: String,
   image: String,
   link: String,
-  orderId : Number
+  orderId : Number,
+  largeImage: String
 
 })
 module.exports = mongoose.model('Game', GameSchema);
