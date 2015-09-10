@@ -7,6 +7,7 @@
     "url": "git+https://github.com/ChuBaka13321/steamTube.git"
   },
   "dependencies": {
+    "angular-youtube-embed": "^1.1.0",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "mongoose": "^4.1.5",

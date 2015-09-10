@@ -10,26 +10,32 @@ var terminate = function() {
 
 function getGames() {
     var list = document.querySelectorAll('div.tab_item_name');
-    var images = document.querySelectorAll('img.tab_item_cap');
+    var test = document.querySelectorAll('img.tab_item_cap_img');
+    var images = [];
+    for(var j = 0; j < test.length; j++) {
+      var andrew = test[j].getAttribute('src')
+      var testCut = andrew.indexOf("231")
+      images.push(andrew.slice(0, testCut) + "sm_120.jpg");
+
+      // sm_120.jpg
+    }
+
     var prices = document.getElementsByClassName('tab_item')
     var result = [];
     for(var i = 0; i < prices.length; i++) {
-      var price = prices[i].querySelector('div.discount_final_price');
+      var price = prices[i].querySelector('div.discount_final_price') || " ";;
       console.log(price)
-      if(!price) {
-        result.push(' '); 
-      } else {
-        result.push(price); 
-      }
+      result.push(price);
     }
     var link = document.querySelectorAll('a.tab_item_overlay');
     var games = [];
-    for(var i = 0; i < list.length; i++) {
+    for(var k = 0; k < list.length; k++) {
       games.push({
-        'title' : list[i].innerHTML,
-        'image' : images[i].getAttribute('src'),
-        'price' : result[i].innerHTML,
-        'link'  : link[i].getAttribute('href')
+        'title' : list[k].innerHTML,
+        // 'image' : images[k].getAttribute('src'),
+        'image' : images[k],
+        'price' : result[k].innerHTML,
+        'link'  : link[k].getAttribute('href')
       });
     }
     return games;

@@ -1,8 +1,8 @@
-angular.module('mainCtrl', ['gameService'])
+angular.module('mainCtrl', ['gameService', 'youtube-embed'])
 // angular.module('mainCtrl', [])
   
 // .controller('mainController', function($rootScope, $location, Auth) {
-.controller('mainController', function($scope, $location, httpDataLoader, Game) {
+.controller('mainController', function($scope, $location, httpDataLoader, Game, $timeout) {
 
   // $scope.results = httpDataLoader.load();
 
