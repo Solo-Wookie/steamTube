@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Game = require(__dirname + '/app/models/game');
 var fs = require('fs');
+var port = process.env.PORT || 1337;
 
 // use body parser so we can grab information from POST requests
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -78,4 +79,4 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
   // res.sendFile(path.join(__dirname + '/dataFile.txt'));
 });
-app.listen(1337);
+app.listen(port);
