@@ -19,7 +19,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
       $scope.video1 = JSON.parse(responseString).items[0].id.videoId;
       $scope.video2 = JSON.parse(responseString).items[1].id.videoId;
       // $scope.video3 = JSON.parse(responseString).items[2].id.videoId;
-      console.log($scope.video);
+      console.log(JSON.parse(responseString).items);
       $scope.$apply()
 
   }
