@@ -3,10 +3,12 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
 .controller('gameController', function($scope, $location, Game, $routeParams, $timeout) {
   Game.get($routeParams.id)
     .success(function(data) {
-      $scope.image = data.image
+      // $scope.image = data.image
       $scope.name = data.name
       $scope.price = data.price
       $scope.link = data.link
+      $scope.largeImage = data.largeImage
+      console.log(data)
     })
 
   function showResponse(response) {
@@ -16,7 +18,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
       // $scope.blank = JSON.parse(responseString).items[0].id.videoId;
       $scope.video1 = JSON.parse(responseString).items[0].id.videoId;
       $scope.video2 = JSON.parse(responseString).items[1].id.videoId;
-      $scope.video3 = JSON.parse(responseString).items[2].id.videoId;
+      // $scope.video3 = JSON.parse(responseString).items[2].id.videoId;
       console.log($scope.video);
       $scope.$apply()
 

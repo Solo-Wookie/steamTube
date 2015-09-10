@@ -1,6 +1,6 @@
 <div class="jumbotron text-center"> 
   <h1>Welcome to SteamTube!</h1>
-  <h1></h1>
+  <h3><label>Search Games: <input ng-model="searchText"></label></h3>
 
 
   <table class="table table-bordered table-striped">
@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="game in games | orderBy: 'orderId'">
+      <tr ng-repeat="game in games | orderBy: 'orderId' | filter:searchText">
         <td ng-click = single()><img ng-src={{game.image}} alt="Description" /></td>
         <td ng-click = single()>{{ game.name }}</td>
         <td ng-click = single()>{{ game.price }}</td>

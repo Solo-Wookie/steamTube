@@ -13,10 +13,12 @@ function getGames() {
     var test = document.querySelectorAll('img.tab_item_cap_img');
     var images = [];
     for(var j = 0; j < test.length; j++) {
-      var andrew = test[j].getAttribute('src')
-      var testCut = andrew.indexOf("231")
-      images.push(andrew.slice(0, testCut) + "sm_120.jpg");
-
+      var imageLink = test[j].getAttribute('src')
+      // var testCut = imageLink.indexOf("231")
+      var testCut = imageLink.indexOf("capsule")
+      images.push(imageLink.slice(0, testCut) + "header.jpg");
+      // images.push(imageLink.slice(0, testCut) + "sm_120.jpg");
+      // header.jpg
       // sm_120.jpg
     }
 
@@ -32,8 +34,8 @@ function getGames() {
     for(var k = 0; k < list.length; k++) {
       games.push({
         'title' : list[k].innerHTML,
-        // 'image' : images[k].getAttribute('src'),
-        'image' : images[k],
+        'image' : test[k].getAttribute('src'),
+        'largeImage' : images[k],
         'price' : result[k].innerHTML,
         'link'  : link[k].getAttribute('href')
       });

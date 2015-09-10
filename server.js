@@ -44,6 +44,7 @@ fs.readFile(__dirname + '/public/assets/dataFile.json', 'utf8', function (err, d
       price: json[i]["price"],
       image: json[i]["image"],
       link: json[i]["link"],
+      largeImage: json[i]["largeImage"],
       orderId : i
     });
     console.log(game)
