@@ -8,6 +8,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
       $scope.price = data.price
       $scope.link = data.link
       $scope.largeImage = data.largeImage
+      // $scope.twitch = "https://www.twitch.tv/summit1g/embed"
       console.log(data)
       onClientLoad()
     })
