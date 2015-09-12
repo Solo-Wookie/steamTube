@@ -5,5 +5,6 @@ angular.module('myApp', [
   'mainCtrl',
   'gameCtrl',
   'gameService',
-  'youtube-embed'
+  'youtube-embed',
+  'twitchService'
 ])

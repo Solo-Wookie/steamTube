@@ -1,6 +1,6 @@
-angular.module('gameCtrl', ['gameService', 'youtube-embed'])
+angular.module('gameCtrl', ['gameService', 'youtube-embed', 'twitchService'])
 
-.controller('gameController', function($scope, $location, Game, $routeParams, $timeout) {
+.controller('gameController', function($scope, $location, Game, $routeParams, $timeout, $sce, Twitch) {
   Game.get($routeParams.id)
     .success(function(data) {
       // $scope.image = data.image
@@ -8,10 +8,19 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
       $scope.price = data.price
       $scope.link = data.link
       $scope.largeImage = data.largeImage
-      // $scope.twitch = "https://www.twitch.tv/summit1g/embed"
       console.log(data)
+      
+      Twitch.get('https://api.twitch.tv/kraken/streams?game=' + data.name)
+        .success(function(stream){
+          // console.log("MATTHIEU ", stream["streams"][0]["channel"]["url"])
+          // var blah = "http://www.twitch.tv/summit1g/embed"
+          var channel = stream["streams"][0]["channel"]["url"] + "/embed";
+          $scope.twitch = $sce.trustAsResourceUrl(channel);
+        })
       onClientLoad()
     })
+
+    
 
   function showResponse(response) {
       var responseString = JSON.stringify(response, '', 2);
@@ -22,7 +31,10 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed'])
       $scope.video2 = JSON.parse(responseString).items[1].id.videoId;
       // $scope.video3 = JSON.parse(responseString).items[2].id.videoId;
       console.log(JSON.parse(responseString).items);
+      // var streams = JSON.parse(get_url_contents("https://api.twitch.tv/kraken/streams?game=Counter-Strike: Global Offensive"));
+      // console.log("MATTHIEU ", streams)
       $scope.$apply()
+      
 
   }
 
