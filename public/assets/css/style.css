@@ -1,3 +1,66 @@
+body {
+  background-color: #22374B;
+  /*color: #FFFFFF;*/
+}
 .navbar-inverse {
   background-color: black;
 }
+
+#bottomrows {
+  padding: 10px;
+  position: relative;
+  height: 100%;
+}
+
+input {
+  background-color: #16202D;
+  color: #62B7E9;
+}
+
+#outer {
+  display: table;
+  height: 215px;
+}
+
+#inner{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.jumbotron {
+  padding: 5px;
+  margin: 0;
+  background-color: #C7D5E0;
+  /*color: ;*/
+}
+
+#home {
+  font-size: 27px;
+}
+
+table {
+  background-color: #16202D;
+  color: #C7D5E0;
+  /*border-radius: 15px;*/
+}
+
+header {
+  padding: 0;
+  margin: 0;
+}
+.navbar.navbar-inverse {
+  margin: 0;
+  padding: 0;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  color: #62B7E9;
+  /*display: table;*/
+}
+
+
+
