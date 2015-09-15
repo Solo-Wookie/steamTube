@@ -9,13 +9,20 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed', 'twitchService'])
       $scope.link = data.link
       $scope.largeImage = data.largeImage
       console.log(data)
+      // $scope.twitch = $sce.trustAsResourceUrl("http://www.youtube.com/embed");
       
       Twitch.get('https://api.twitch.tv/kraken/streams?game=' + data.name)
         .success(function(stream){
-          // console.log("MATTHIEU ", stream["streams"][0]["channel"]["url"])
+          // console.log("MATTHIEU ", stream)
           // var blah = "http://www.twitch.tv/summit1g/embed"
-          var channel = stream["streams"][0]["channel"]["url"] + "/embed";
+          if(stream["streams"][0]) {
+            var channel = stream["streams"][0]["channel"]["url"] + "/embed";
+          } else {
+            var channel = "http://placehold.it/485x390/ffffff/"
+          }
+          console.log("Channel", channel)
           $scope.twitch = $sce.trustAsResourceUrl(channel);
+          // $scope.twitch = "http://www.youtube.com/embed/XGSy3_Czz8k";
         })
       onClientLoad()
     })
@@ -27,8 +34,9 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed', 'twitchService'])
       // document.getElementById('response').innerHTML += responseString;
       // console.log("RESPONSE STRING" +responseString)
       // $scope.blank = JSON.parse(responseString).items[0].id.videoId;
-      $scope.video1 = JSON.parse(responseString).items[0].id.videoId;
-      $scope.video2 = JSON.parse(responseString).items[1].id.videoId;
+      console.log("ANDREW", JSON.parse(responseString).items[0].id.videoId)
+      $scope.video1 = JSON.parse(responseString).items[0].id.videoId || JSON.parse(responseString).items[1].id.videoId;
+      // $scope.video2 = JSON.parse(responseString).items[1].id.videoId;
       // $scope.video3 = JSON.parse(responseString).items[2].id.videoId;
       console.log(JSON.parse(responseString).items);
       // var streams = JSON.parse(get_url_contents("https://api.twitch.tv/kraken/streams?game=Counter-Strike: Global Offensive"));

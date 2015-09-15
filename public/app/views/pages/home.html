@@ -3,21 +3,21 @@
   <h3><label>Search Games: <input ng-model="searchText"></label></h3>
 
 
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th>                      </th>
-        <th>Game</th>
-        <th>Price</th>
+        <th></th>
+        <th><h3>Games</h3></th>
+        <th><h3>Price</h3></th>
         <!-- <th>Link</th> -->
         <!-- <th class="col-sm-2"></th> -->
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="game in games | orderBy: 'orderId' | filter:searchText">
-        <td ng-click = single()><img ng-src={{game.image}} alt="Description" /></td>
-        <td ng-click = single()>{{ game.name }}</td>
-        <td ng-click = single()>{{ game.price }}</td>
+        <td ng-click = single()><img ng-src={{game.image}} alt="Description"></td>
+        <td ng-click = single()><div><h3>{{ game.name }}</h3></div></td>
+        <td ng-click = single()><div><h3>{{ game.price }}</h3></div></td>
         <!-- <td ng-click = single()><a href="{{game.link}}">{{game.link}}</a></td> -->
         <!-- <td class="col-sm-2">
           <a ng-href="/users/{{ person._id }}" class="btn btn-danger">Edit</a>
