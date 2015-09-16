@@ -13,7 +13,9 @@
     "angular-youtube-embed": "^1.1.0",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
+    "express-session": "^1.11.3",
     "mongoose": "^4.1.5",
-    "morgan": "^1.6.1"
+    "morgan": "^1.6.1",
+    "steam-login": "^0.1.3"
   }
 }
