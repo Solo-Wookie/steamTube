@@ -1,4 +1,5 @@
 var Game = require('../models/game');
+var steam = require('steam-login');
 
 module.exports = function(app, express) {
 
@@ -8,6 +9,20 @@ module.exports = function(app, express) {
   // accessed at GET http://localhost:8080/api
   apiRouter.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' }); 
+  });
+  apiRouter.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+    next();
+  });
+
+  apiRouter.get('/authenticate', steam.authenticate(), function(req, res) {
+    console.log('yo')
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+    res.redirect('/');
   });
 
   // on routes that end in /games

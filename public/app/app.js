@@ -1,10 +1,11 @@
 angular.module('myApp', [
-  // 'ngAnimate',
+  'ngAnimate',
   'app.routes',
   // 'authService',
   'mainCtrl',
   'gameCtrl',
   'gameService',
   'youtube-embed',
-  'twitchService'
+  'twitchService',
+  'steamService'
 ])

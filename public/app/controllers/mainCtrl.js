@@ -1,8 +1,8 @@
-angular.module('mainCtrl', ['gameService', 'youtube-embed'])
+angular.module('mainCtrl', ['gameService', 'youtube-embed', 'steamService'])
 // angular.module('mainCtrl', [])
   
 // .controller('mainController', function($rootScope, $location, Auth) {
-.controller('mainController', function($scope, $location, httpDataLoader, Game, $timeout) {
+.controller('mainController', function($scope, $location, httpDataLoader, Game, $timeout, Steam) {
 
   // $scope.results = httpDataLoader.load();
 
@@ -15,6 +15,9 @@ angular.module('mainCtrl', ['gameService', 'youtube-embed'])
   // });
   
   // grab all the users at page load
+  $scope.authenticate = function() {
+    Steam.authenticate().then(function(){console.log("anything")});
+  }
 
   $scope.single = function() {
     var gameId = this.game["_id"];

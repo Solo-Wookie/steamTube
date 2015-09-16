@@ -1,6 +1,6 @@
-angular.module('gameCtrl', ['gameService', 'youtube-embed', 'twitchService'])
+angular.module('gameCtrl', ['gameService', 'youtube-embed', 'twitchService', 'steamService'])
 
-.controller('gameController', function($scope, $location, Game, $routeParams, $timeout, $sce, Twitch) {
+.controller('gameController', function($scope, $location, Game, $routeParams, $timeout, $sce, Twitch, Steam) {
   Game.get($routeParams.id)
     .success(function(data) {
       // $scope.image = data.image
@@ -18,7 +18,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed', 'twitchService'])
           if(stream["streams"][0]) {
             var channel = stream["streams"][0]["channel"]["url"] + "/embed";
           } else {
-            var channel = "http://placehold.it/485x390/ffffff/"
+            var channel = "http://placehold.it/485x390/ffffff/?text=No Streams"
           }
           console.log("Channel", channel)
           $scope.twitch = $sce.trustAsResourceUrl(channel);
