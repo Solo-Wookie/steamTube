@@ -14,9 +14,9 @@
     </thead>
     <tbody>
       <tr ng-repeat="game in games | orderBy: 'orderId' | filter:searchText" class="item">
-        <td ng-click = single()><img ng-src={{game.image}} alt="Description"></td>
-        <td ng-click = single()><div><h3>{{ game.name }}</h3></div></td>
-        <td ng-click = single()><div><h3>{{ game.price }}</h3></div></td>
+        <td ng-click = single() class = "pointer"><img ng-src={{game.image}} alt="Description"></td>
+        <td ng-click = single() class = "pointer"><div><h3>{{ game.name }}</h3></div></td>
+        <td ng-click = single() class = "pointer"><div><h3>{{ game.price }}</h3></div></td>
         
       </tr>
     </tbody>

@@ -3,6 +3,10 @@ body {
   /*color: #FFFFFF;*/
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /*ngview animation*/
 .fade {
     /*position: absolute;*/
