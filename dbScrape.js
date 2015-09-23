@@ -1,3 +1,5 @@
+//File is a test file copy of testScrape.js, work in progress.
+
 var results = [];
 var casper = require('casper').create();
 var fs = require('fs');
@@ -14,12 +16,8 @@ function getGames() {
     var images = [];
     for(var j = 0; j < test.length; j++) {
       var imageLink = test[j].getAttribute('src')
-      // var testCut = imageLink.indexOf("231")
       var testCut = imageLink.indexOf("capsule")
       images.push(imageLink.slice(0, testCut) + "header.jpg");
-      // images.push(imageLink.slice(0, testCut) + "sm_120.jpg");
-      // header.jpg
-      // sm_120.jpg
     }
 
     var prices = document.getElementsByClassName('tab_item')
@@ -45,18 +43,13 @@ function getGames() {
 
 var processPage = function() {
     games = this.evaluate(getGames);
-    // require('utils').dump(JSON.stringify(games));
     require('utils').dump(games);
 
 };
 casper.start(url);
 casper.waitForSelector('div.tab_item', processPage, terminate, 10000);
 casper.then(function() {
-  // fs.write("dataFile.txt", "'yo'", 'w');
-  // fs.write("dataFile.txt", JSON.stringify(games), 'w');
   fs.write("public/assets/dataFile.json", JSON.stringify(games), 'w');
-  // fs.write("dataFile.txt", JSON.parse(JSON.stringify(games)), 'w');
-  // fs.write("/public/assets/dataFile.json", "yo", 'w');
 });
 casper.run();
 

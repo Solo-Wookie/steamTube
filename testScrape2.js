@@ -2,8 +2,8 @@ var results = [];
 var casper = require('casper').create();
 var fs = require('fs');
 
-var url = 'http://store.steampowered.com/tag/en/Action/#os%5B%5D=mac&p=0&tab=NewReleases';
-var allGames;
+var url = 'http://store.steampowered.com/tag/en/Adventure/#os%5B%5D=mac&p=0&tab=NewReleases';
+var games = [];
 var terminate = function() {
     this.echo("Exiting..").exit();
 };
@@ -27,14 +27,10 @@ function getGames() {
     }
     var link = document.querySelectorAll('a.tab_item_overlay');
     var tags = document.querySelectorAll('div.tab_item_top_tags');
-    var types = [];
-    for(var x = 0; x < tags.length; x++) {
-      var tag = tags[x].children;
-      var tempType = "";
-      for(var y = 0; y < tag.length; y++) {
-        tempType += tag[y].innerHTML;
-      }
-      types.push(tempType);
+    var types = "";
+    for(var i = 0; i < tags[0].children.length; i++) {
+      var tag = tags[0].children[i].innerHTML
+      types += tag;
       // if(tag[0] === ",") {
       //   tag.slice(2, tag.length)
       // }
@@ -48,22 +44,22 @@ function getGames() {
         'largeImage' : images[k],
         'price' : result[k].innerHTML,
         'link'  : link[k].getAttribute('href'),
-        'type'  : types[k]
+        'type'  : types
       });
     }
     return games;
 }
 
 var processPage = function() {
-    allGames = this.evaluate(getGames);
+    games = this.evaluate(getGames);
     // require('utils').dump(JSON.stringify(games));
-    require('utils').dump(allGames);
+    require('utils').dump(games);
 
 };
 casper.start(url);
 casper.waitForSelector('div.tab_item', processPage, terminate, 10000);
 casper.then(function() {
-  fs.write("public/assets/dataFile.json", JSON.stringify(allGames), 'w');
+  fs.appendFile("public/assets/dataFile.json", JSON.stringify(games), 'w');
 });
 casper.run();
 

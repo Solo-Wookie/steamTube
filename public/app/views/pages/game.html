@@ -3,55 +3,25 @@
 <div class="jumbotron text-center"> 
     
   <div><h2>{{name}}</h2></div>
-  <!-- <div class = "row">
-    <div class="col-md-6"><h3>youtube</h3></div>
-    <div class="col-md-6"><h3>twitch</h3></div>
-  </div> -->
   <div class = "row" id = "bottomrows">
   
       <youtube-video video-id="video1" class="col-md-6"></youtube-video>
-      <!-- <youtube-video video-id="video2" class="col-md-6"></youtube-video> -->
       <iframe class="col-md-6" id="player" type="text/html" width="494px" height="390px"
         ng-src="{{twitch}}"
         frameborder="0"></iframe>
-     <!--  <iframe class = "col-md-6" id="player" type="text/html" width="494px" height="390px"
-        ng-src="http://www.twitch.tv/xSmaK/embed"
-        frameborder="0"></iframe> -->
-        <!-- <iframe id="chat_embed" src="http://twitch.tv/chat/embed?channel=xSmaK;popout_chat=true" width="620" height="378" frameborder="0"></iframe> -->
-      <!-- <youtube-video video-id="video3"></youtube-video> -->
+    
   </div>
   
   <div class = "row" id = "bottomrows">
     <div class="col-md-6" id = "outer">
       <div id = "inner">
         <h4>Price: {{price}}</h4>
-        <!-- <div><a ng-href="{{link}}">VISIT THE STEAM STORE</a></div> -->
-        <a type="button" class="btn btn-success" ng-href="{{link}}">VISIT THE STEAM STORE</a>
+        <a type="button" class="btn btn-success" ng-href="{{link}}">VIEW THIS ON THE STEAM STORE</a>
       </div>
     </div>
     <div class="col-md-6" ><img ng-src={{largeImage}} height="215" width="460"alt="Description" /></div>
   </div>
-  <!-- <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>                      </th>
-        <th>Game</th>
-        <th>Price</th>
-        <th>Link</th> -->
-        <!-- <th class="col-sm-2"></th> 
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="game in games | orderb">
-        <td><img ng-src={{game.image}} alt="Description" /></td>
-        <td>{{ game.name }}</td>
-        <td>{{ game.price }}</td>
-        <td><a href="{{game.link}}">{{game.link}}</a></td>
-        <!-- <td class="col-sm-2">
-          <a ng-href="/users/{{ person._id }}" class="btn btn-danger">Edit</a>
-          <a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a>
-        </td> 
-      </tr> -->
+ 
     </tbody>
   </table>
 </div>
