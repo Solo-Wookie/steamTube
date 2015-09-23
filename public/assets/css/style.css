@@ -2,6 +2,9 @@ body {
   background-color: #22374B;
   /*color: #FFFFFF;*/
 }
+.powered {
+  color:white;
+}
 
 .tags {
   display: inline-block;
