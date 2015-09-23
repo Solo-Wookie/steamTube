@@ -3,16 +3,20 @@ body {
   /*color: #FFFFFF;*/
 }
 
+.tags {
+  display: inline-block;
+/*  width: 200px;
+  height: 100px;*/
+  margin: 5px;
+}
+
+
 .pointer {
   cursor: pointer;
 }
 
 /*ngview animation*/
 .fade {
-    /*position: absolute;*/
-/*    top: 0;
-    left: 0;
-    right: 0;*/
     opacity: 1;
 }
 .fade.ng-enter {
@@ -20,8 +24,6 @@ body {
   transition: all 2s ease;
 },
 .fade.ng-leave {
-   /* -webkit-transition: all 0.1s ease;
-    transition: all 0.1s ease;*/
 }
 .fade.ng-enter {
     opacity: 0;
@@ -97,7 +99,6 @@ input {
 table {
   background-color: #16202D;
   color: #C7D5E0;
-  /*border-radius: 15px;*/
 }
 
 header {
@@ -115,7 +116,6 @@ th {
 
 td {
   color: #62B7E9;
-  /*display: table;*/
 }
 
 

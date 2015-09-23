@@ -1,51 +1,60 @@
 angular.module('mainCtrl', ['gameService', 'youtube-embed', 'steamService'])
-// angular.module('mainCtrl', [])
   
-// .controller('mainController', function($rootScope, $location, Auth) {
-.controller('mainController', function($scope, $location, httpDataLoader, Game, $timeout, Steam) {
+.controller('mainController', function($scope, $location, Game, $timeout, Steam) {
 
-  // $scope.results = httpDataLoader.load();
-
-  // $scope.results.then(function(response){
-  //   console.log("success", response);
-  //   $scope.games = response.data;
-  //   // debugger
-  // }, function(response){
-  //   console.log('error')
-  // });
-  
-  // grab all the users at page load
-  $scope.authenticate = function() {
-    Steam.authenticate().then(function(){console.log("anything")});
-  }
-
-  $scope.single = function() {
-    var gameId = this.game["_id"];
-    // 
-    console.log(this.game["_id"]);
-    // console.log("yoooooooo" + newScope.blah)
-    $location.path('/game/'+ gameId)
-  }
-
-
+  // grab all the games at page load
+  $scope.steam = "http://store.steampowered.com/";
   Game.all()
 
-    .success(function(data) {
-      // when all the users come back, remove the processing variable
-      $scope.processing = false;
-        
-      // bind the users that come back to vm.users
+    .success(function(data) {     
       $scope.games = data;
+      var allTypes = [];
+      for(var i = 0; i < data.length; i++) {
+        var typeArray = data[i].type.split(', ');
+        for(var j = 0; j < typeArray.length; j++) {
+          if(allTypes.indexOf(typeArray[j]) === -1 && typeArray[j] !== "") {
+            allTypes.push(typeArray[j])
+          }
+        }
+      }
+      $scope.types = allTypes;
     });
 
+  $scope.actionBox = function(){
+    if(!$scope.Action) {
+      $scope.Action = "Action"
+    } else {
+      $scope.Action = "";
+    }
+  } 
+  $scope.adventureBox = function(){
+    if(!$scope.Adventure) {
+      $scope.Adventure = "Adventure"
+    } else {
+      $scope.Adventure = "";
+    }
+  } 
+  $scope.indieBox = function(){
+    if(!$scope.Indie) {
+      $scope.Indie = "Indie"
+    } else {
+      $scope.Indie = "";
+    }
+  } 
+  $scope.fpsBox = function(){
+    if(!$scope.FPS) {
+      $scope.FPS = "FPS"
+    } else {
+      $scope.FPS = "";
+    }
+  }
+  $scope.single = function() {
+    var gameId = this.game["_id"];
+    $location.path('/game/'+ gameId)
+  }
+  
+  //This part work in progress
+  // $scope.authenticate = function() {
+  //   Steam.authenticate().then(function(){console.log("anything")});
+  // }
 })
-
-.service("httpDataLoader", ["$http", function($http) {
-  this.load = function() {
-    // return $http({url: "assets/dataFile.json"});
-    return $http.get("assets/dataFile.json");
-  }
-  this.test = function() {
-    console.log('yo doodz');
-  }
-}]);

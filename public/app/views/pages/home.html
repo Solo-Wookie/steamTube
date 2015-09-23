@@ -1,24 +1,47 @@
 <div class="jumbotron text-center"> 
-  <h1>Welcome to SteamTube!</h1>
-  <h3><label>Search Games: <input ng-model="searchText"></label></h3>
+  <div class="page-header">
+    <h1>Welcome to SteamTube!</h1>
+    <h5>Ever visited the Steam store page, clicked on a game, and wanted to see more gameplay? </br>SteamTube connects gamers to a quick YouTube video for a quick glimpse of gameplay or even sometimes a Twitch Stream.</br> Sometimes seeing a gameplay video or a live stream makes the difference in one's next purchase decision.</h5>
+  </div>
+  <div class="col-md-6">
+    <h4><label>Search Games: <input ng-model="searchText"></label></h4>
+  </div>
+  <div class="col-md-6">
+    <h4><label>Narrow by Tags</label></h4>
+    <h5 class = "tags"><label><input type="checkbox" ng-click = actionBox()>Action</label></h5>
+    <h5 class = "tags"><label><input type="checkbox" ng-click = adventureBox()>Adventure</label></h5>
+    <h5 class = "tags"><label><input type="checkbox" ng-click = indieBox()>Indie</label></h5>
+    <h5 class = "tags"><label><input type="checkbox" ng-click = fpsBox()>FPS</label></h5>
+  </div>
 
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th><h4>Games</h4></th>
+          <th><h4>Tags</h4></th>
+          <th><h4>Price</h4></th>
 
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th></th>
-        <th><h3>Games</h3></th>
-        <th><h3>Price</h3></th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="game in games | orderBy: 'orderId' | filter:searchText" class="item">
-        <td ng-click = single() class = "pointer"><img ng-src={{game.image}} alt="Description"></td>
-        <td ng-click = single() class = "pointer"><div><h3>{{ game.name }}</h3></div></td>
-        <td ng-click = single() class = "pointer"><div><h3>{{ game.price }}</h3></div></td>
-        
-      </tr>
-    </tbody>
-  </table>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="game in games | orderBy: 'orderId' | filter:searchText | filter: Action | filter: Adventure | filter: Indie | filter: FPS" class="item">
+          <td ng-click = single() class = "pointer"><img ng-src={{game.image}} alt="Description"></td>
+          <td ng-click = single() class = "pointer" id = "inner"><h5>{{ game.name }}</h5></td>
+          <td id = "inner"><h5>{{ game.type }}</h5></td>
+          <td ng-click = single() class = "pointer" id = "inner"><h5>{{ game.price }}</h5></td>
+          
+        </tr>
+      </tbody>
+    </table>
+  <!-- </div> -->
+  <!-- <div class ="col-md-4">
+    <table class = "table table-bordered">
+      <tbody>
+        <tr ng-repeat="type in types">
+          <td>{{ type }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
 </div>
