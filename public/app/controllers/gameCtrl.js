@@ -7,6 +7,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed', 'twitchService', 'st
       $scope.price = data.price
       $scope.link = data.link
       $scope.largeImage = data.largeImage
+      $scope.tags = data.type
       
       Twitch.get('https://api.twitch.tv/kraken/streams?game=' + data.name)
         .success(function(stream){
