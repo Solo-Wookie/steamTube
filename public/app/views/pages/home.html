@@ -8,8 +8,8 @@
   </div>
   <div class="col-md-6">
     <h4><label>Narrow by Tags</label></h4>
-    <h5 class = "tags"><label><input type="checkbox" ng-click = actionBox()>Action</label></h5>
     <h5 class = "tags"><label><input type="checkbox" ng-click = adventureBox()>Adventure</label></h5>
+    <h5 class = "tags"><label><input type="checkbox" ng-click = earlyBox()>Early Access</label></h5>
     <h5 class = "tags"><label><input type="checkbox" ng-click = indieBox()>Indie</label></h5>
     <h5 class = "tags"><label><input type="checkbox" ng-click = fpsBox()>FPS</label></h5>
   </div>
@@ -25,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="game in games | orderBy: 'orderId' | filter:searchText | filter: Action | filter: Adventure | filter: Indie | filter: FPS" class="item">
+        <tr ng-repeat="game in games | orderBy: 'orderId' | filter:searchText | filter: Early | filter: Adventure | filter: Indie | filter: FPS" class="item">
           <td ng-click = single() class = "pointer"><img ng-src={{game.image}} alt="Description"></td>
           <td ng-click = single() class = "pointer" id = "inner"><h5>{{ game.name }}</h5></td>
           <td id = "inner"><h5>{{ game.type }}</h5></td>

@@ -20,18 +20,18 @@ angular.module('mainCtrl', ['gameService', 'youtube-embed', 'steamService'])
       $scope.types = allTypes;
     });
 
-  $scope.actionBox = function(){
-    if(!$scope.Action) {
-      $scope.Action = "Action"
-    } else {
-      $scope.Action = "";
-    }
-  } 
   $scope.adventureBox = function(){
     if(!$scope.Adventure) {
       $scope.Adventure = "Adventure"
     } else {
       $scope.Adventure = "";
+    }
+  } 
+  $scope.earlyBox = function(){
+    if(!$scope.Early) {
+      $scope.Early = "Early Access"
+    } else {
+      $scope.Early = "";
     }
   } 
   $scope.indieBox = function(){
