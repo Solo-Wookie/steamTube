@@ -14,7 +14,7 @@ angular.module('gameCtrl', ['gameService', 'youtube-embed', 'twitchService', 'st
           if(stream["streams"][0]) {
             var channel = stream["streams"][0]["channel"]["url"] + "/embed";
           } else {
-            var channel = "http://placehold.it/485x390/ffffff/?text=No Streams"
+            var channel = "http://placehold.it/485x390/ffffff/?text=No Twitch Streams"
           }
           $scope.twitch = $sce.trustAsResourceUrl(channel);
         })
